@@ -1,0 +1,18 @@
+{
+    "rootPath": "/",
+    "maxPosts": 5,
+    "languages": {
+        "default": {
+            "sitePath": "/",
+            "locale": "en-US",
+            "title": "Shoya Shimazaki's Blog",
+            "author": "Shoya Shimazaki"
+        },
+        "ja": {
+            "sitePath": "/ja/",
+            "locale": "ja-JP",
+            "title":"Shoya Shimazaki's Blog",
+            "author": ""
+        }
+    }
+}
