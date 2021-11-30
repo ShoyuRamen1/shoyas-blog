@@ -1,18 +1,23 @@
 {
     "rootPath": "/",
+    "imageRoot": "https://websiteurl/images/",
     "maxPosts": 5,
+    "github": "https://github.com/ShoyuRamen1",
     "languages": {
         "default": {
+            "bannerUrl": null,
             "sitePath": "/",
             "locale": "en-US",
             "title": "Shoya Shimazaki's Blog",
-            "author": "Shoya Shimazaki"
+            "author": "Shoya Shimazaki",
+            "description": "Shoya Shimazaki's blog."
         },
         "ja": {
             "sitePath": "/ja/",
             "locale": "ja-JP",
             "title": "嶌嵜翔也のブログ",
-            "author": "嶌嵜 翔也"
+            "author": "嶌嵜 翔也",
+	        "description": "数学や物理、プログラミングなどのことを書くブログです。"
         }
     }
 }
