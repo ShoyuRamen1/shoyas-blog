@@ -4,7 +4,7 @@ import { BlogContext } from "../lib/BlogContext";
 
 import { kebabCase } from "../lib/utils";
 
-const Tag = ({ text }) => {
+const Tag = ({ text }: {text: any}) => {
   const { sitePath } = useContext(BlogContext);
   const href = `${sitePath}tags/${kebabCase(text)}`;
   return (

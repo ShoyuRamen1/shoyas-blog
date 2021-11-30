@@ -13,6 +13,7 @@ import remarkMath from "remark-math";
 import rehypeSlug from "rehype-slug";
 import rehypeKatex from "rehype-katex";
 import rehypePrism from "rehype-prism/lib/src";
+import { PostInterface } from "./PostInterface";
 
 
 const root = process.cwd();
@@ -65,13 +66,13 @@ export async function getFileBySlug(
                 slug: slug || null,
                 filename: fs.existsSync(mdxPath) ? `${slug}.mdx` : `${slug}.md`,
                 ...data
-            } as unknown as FrontMatterInterface
+            } as unknown as PostInterface
         };
 }
 
 export async function getAllFilesFrontMatter(language: string = "default"){
     const files = fs.readdirSync(path.join(root, "src", language));
-    const allFrontMatter: FrontMatterInterface[] = [];
+    const allFrontMatter: PostInterface[] = [];
 
     files.forEach(file => {
         const source = fs.readFileSync(
