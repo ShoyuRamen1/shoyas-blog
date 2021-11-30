@@ -1,22 +1,26 @@
-import React from 'react'
-import Link from 'next/link'
+ 
+import Link from "next/link";
+import { AnchorHTMLAttributes, DetailedHTMLProps, FC } from "react";
 
-const CustomLink = ({href, ...rest}: {href: any}) => {
-    const isInternalLink = href && href.startsWith("/");
-    const isAnchorLink = href && href.startsWith("#");
+const CustomLink: FC<
+  DetailedHTMLProps<AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>
+> = ({ href, ...rest }) => {
+  const isInternalLink = href && href.startsWith("/");
+  const isAnchorLink = href && href.startsWith("#");
 
-    if (isInternalLink) {
-        return (
-            <Link href={href}>
-                <a {...rest} />
-            </Link>
-        )
-    }
+  if (isInternalLink) {
+    return (
+      <Link href={href} passHref>
+        <a {...rest} />
+      </Link>
+    );
+  }
 
-    if (isAnchorLink) {
-        return <a href={href} {...rest} />
-    }
-    return <a target="_blank" rel="noopener noreferrer" href={href} {...rest}/>
-}
+  if (isAnchorLink) {
+    return <a href={href} {...rest} />;
+  }
 
-export default CustomLink
+  return <a target="_blank" rel="noopener noreferrer" href={href} {...rest} />;
+};
+
+export { CustomLink };

@@ -7,7 +7,11 @@ import Twitter from './twitter.svg'
 
 // Icons taken from: https://simpleicons.org/
 
-const components = {
+interface StringKeyObject {
+  [key: string]: string;
+}
+
+const components: StringKeyObject = {
   mail: Mail,
   github: Github,
   facebook: Facebook,
@@ -16,7 +20,7 @@ const components = {
   twitter: Twitter,
 }
 
-const SocialIcon = ({ kind, href, size = 8 }) => {
+const SocialIcon = ({ kind, href, size = 8 }:{kind: any, href: string, size: number}) => {
   if (!href || (kind === 'mail' && !/^mailto:\w+([.-]?\w+)@\w+([.-]?\w+)(.\w{2,3})+$/.test(href)))
     return null
 
@@ -31,7 +35,8 @@ const SocialIcon = ({ kind, href, size = 8 }) => {
     >
       <span className="sr-only">{kind}</span>
       <SocialSvg
-        className={`fill-current text-gray-700 dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400 h-${size} w-${size}`}
+        key={`fill-current text-gray-700 dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400 h-${size} w-${size}`}
+      //might not work, it was className before
       />
     </a>
   )
