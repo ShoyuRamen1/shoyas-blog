@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { FC, useContext } from "react";
-/*
+
 import {
   Divider,
   Grid,
@@ -10,19 +10,19 @@ import {
   Menu,
   Segment
 } from "semantic-ui-react";
-*/
+
 
 import { BlogContext } from "../../lib/BlogContext";
 import { FrontMatterInterface } from "../../lib/FrontMatterInterface" 
 
-/*
+
 import { About } from "../contents/About";
 import { PostsForStudents } from "../contents/PostsForStudents";
 
 import { BaseLayout } from "../layouts/BaseLayout";
 import { ListLayout } from "../layouts/ListLayout";
-import { PageSeo } from "../SEO";
-*/
+//import { PageSeo } from "../SEO";
+
 interface IndexPostsPageProps {
   posts: FrontMatterInterface[];
 }
@@ -33,7 +33,6 @@ const IndexPosts: FC<IndexPostsPageProps> = ({ posts }) => {
   );
   return (
     <BaseLayout showFooterMeta={false}>
-      <PageSeo title={title} description={description} url={siteUrl} />
       <ListLayout
         posts={posts}
         header={

@@ -1,34 +1,42 @@
-import Link from './Link'
-//import siteMetadata from '@/data/siteMetadata'
-import SocialIcon from '@/components/social-icons'
-import websiteJson from '../website.json'
+import { FC, useContext } from "react";
+import { Container, Divider, List, Segment } from "semantic-ui-react";
 
-export default function Footer() {
-  return (
-    <footer>
-      <div className="flex flex-col items-center mt-16">
-        <div className="flex mb-3 space-x-4">
-          <SocialIcon kind="github" href={websiteJson.github} size="6" />
-        </div>
-        <div className="flex mb-2 space-x-2 text-sm text-gray-500 dark:text-gray-400">
-          <div>{websiteJson.languages.default.author}</div>
-          <div>{` • `}</div>
-          <div>{`© ${new Date().getFullYear()}`}</div>
-          <div>{` • `}</div>
-          <Link href="/">{websiteJson.languages.default.title}</Link>
-        </div>
-        <div className="mb-8 text-sm text-gray-500 dark:text-gray-400">
-          <Link href="https://github.com/ShoyuRamen1/shoyas-blog">
-            Tailwind Nextjs Theme
-          </Link>
-        </div>
-      </div>
-    </footer>
-  )
+import { BlogContext } from "../lib/BlogContext";
+import { Meta } from "./contents/Meta";
+
+interface FooterProps {
+  showMeta?: boolean;
+  sourceUrl?: string;
 }
 
-/*<SocialIcon kind="youtube" href={siteMetadata.youtube} size="6" /> use this when you have a
-youtube account to link to
-<SocialIcon kind="linkedin" href={siteMetadata.linkedin} size="6" />
-<SocialIcon kind="twitter" href={siteMetadata.twitter} size="6" />
-*/
+const Footer: FC<FooterProps> = ({ showMeta = true, sourceUrl }) => {
+  const { language, author, authorUrl } = useContext(BlogContext);
+  return (
+    <footer>
+      <Container>
+        {showMeta && <Meta inverted />}
+        <Segment basic inverted textAlign="center">
+          {showMeta && <Divider inverted />}
+          <List horizontal divided inverted>
+            <List.Item>
+              © <a href={`${authorUrl}#contact`}>{author}</a>
+            </List.Item>
+            <List.Item>2012-{new Date().getFullYear()}</List.Item>
+            <List.Item
+              as="a"
+              href={sourceUrl || "https://github.com/arcatdmz/blog"}
+            >
+              <i className="github icon"></i> GitHub
+            </List.Item>
+            <List.Item as="a" href={language === "ja" ? "/" : "/ja"}>
+              <i className="translate icon"></i>{" "}
+              {language === "ja" ? "English" : "日本語"}
+            </List.Item>
+          </List>
+        </Segment>
+      </Container>
+    </footer>
+  );
+};
+
+export { Footer };
